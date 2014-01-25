@@ -53,3 +53,11 @@ function Update () {
 
 
 }
+
+function OnTriggerEnter (collider : Collider) {
+	if (collider.gameObject.tag == "Hound") {
+		var houndControl = collider.gameObject.GetComponent(HoundControl);
+		houndControl.RunAway = true;
+		houndControl.timeRunning = 0;
+	}
+}

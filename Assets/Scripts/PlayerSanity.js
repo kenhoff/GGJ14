@@ -5,8 +5,10 @@ public var HideZoneRechargeRate : float = 0.1;
 public var HideZoneRechargeBoost : float;
 public var PillsRechargeBoost : float;
 
+public var isHiding : boolean;
+
 private var SecondsLeft : float = MaxSanitySeconds;
-private var PercentLeft : float;
+public var PercentLeft : float;
 
 function Start () {
 	SecondsLeft = MaxSanitySeconds;
@@ -20,8 +22,10 @@ function Update () {
 	if (Physics.Raycast(transform.position, Vector3.down, hit)) {
 		if (hit.transform.tag == "HideZone") {
 			hideZoneSanity();
+			isHiding = true;
 		}
 		else {
+			isHiding = false;
 			decreaseSanity();
 		}
 	}
@@ -30,7 +34,7 @@ function Update () {
 		SecondsLeft = MaxSanitySeconds;
 	}
 	PercentLeft = SecondsLeft / MaxSanitySeconds;
-	Debug.Log(PercentLeft);
+	// Debug.Log(PercentLeft);
 
 }
 
