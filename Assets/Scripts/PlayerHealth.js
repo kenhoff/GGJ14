@@ -5,6 +5,7 @@ public var MaxHealth : float = 100;
 public var health : float;
 
 public var RegenRate : float = 1;
+public var renderObj : GameObject;
 
 function Start () {
 	health = MaxHealth;
@@ -12,6 +13,7 @@ function Start () {
 
 function Update () {
 	if (health <= 0) {
+		Destroy(renderObj);
 		Destroy(gameObject);
 		//other endgame logic
 	}

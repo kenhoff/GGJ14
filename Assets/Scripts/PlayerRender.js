@@ -3,6 +3,8 @@
 public var Player : GameObject;
 public var Flashlight: GameObject;
 
+public var bootSounds : AudioClip [];
+
 private var anim : Animator;
 
 function Start () {
@@ -117,14 +119,21 @@ function Update () {
 				}
 			}
 		}
-		
 	}
-	
-
-	
 
 	else {
 		anim.SetInteger("Facing", 0); 
 	}
 
+}
+
+function PlayFootsteps () {
+
+	var sound = bootSounds[Mathf.Floor(Random.value*bootSounds.length)];
+	audio.PlayOneShot(sound);
+
+}
+
+function StopFootsteps () {
+	audio.Stop();
 }

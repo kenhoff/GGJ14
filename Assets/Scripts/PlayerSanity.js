@@ -48,6 +48,10 @@ function Update () {
 		light.enabled = true;
 	}
 
+	if (Input.GetKeyDown("space")) {
+		SecondsLeft -= 10;
+	}
+
 }
 
 function adjustLightRadius (value : float) {
