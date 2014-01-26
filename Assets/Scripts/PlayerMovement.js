@@ -11,5 +11,7 @@ function FixedUpdate () {
 
 	transform.LookAt(transform.position + Vector3(Input.GetAxis("LookHorizontal"), 0, Input.GetAxis("LookVertical")));
 
+	
 
+	
 }
