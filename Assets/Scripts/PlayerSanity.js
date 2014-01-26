@@ -20,11 +20,14 @@ function Update () {
 	var hit : RaycastHit;
 
 	if (Physics.Raycast(transform.position, Vector3.down, hit)) {
+		// Debug.Log(hit.collider.name);
 		if (hit.transform.tag == "HideZone") {
+			// Debug.Log("in a hide zone");
 			hideZoneSanity();
 			isHiding = true;
 		}
 		else {
+			// Debug.Log("not in a hide zone");			
 			isHiding = false;
 			decreaseSanity();
 		}
@@ -36,6 +39,21 @@ function Update () {
 	PercentLeft = SecondsLeft / MaxSanitySeconds;
 	// Debug.Log(PercentLeft);
 
+	adjustLightRadius(PercentLeft);
+
+	if (isHiding) {
+		light.enabled = false;
+	}
+	else {
+		light.enabled = true;
+	}
+
+}
+
+function adjustLightRadius (value : float) {
+	var max_radius = 20;
+	var min_radius = 5;
+	light.range = ((max_radius - min_radius) * value) + min_radius;
 }
 
 function decreaseSanity () : void {

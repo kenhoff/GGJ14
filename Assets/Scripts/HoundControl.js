@@ -12,6 +12,9 @@ public var RunAway : boolean = false;
 public var timeToRun : float = 4;
 public var timeRunning : float = 0;
 
+public var timeToLive : float = 20;
+public var timeAlive : float = 0;
+
 function Start () {
 
 	PlayerTarget = GameObject.FindGameObjectsWithTag("Player")[0];
@@ -43,6 +46,11 @@ function FixedUpdate () {
 		rigidbody.AddForce(Vector3(Random.value, 0, Random.value) * JerkForce);
 	}
 
+	
+	// Debug.Log(rigidbody.velocity.magnitude);
+}
+
+function Update () {
 	if (timeRunning > timeToRun) {
 		RunAway = false;
 	}
@@ -50,7 +58,11 @@ function FixedUpdate () {
 		timeRunning += Time.deltaTime;
 	}
 
-	// Debug.Log(rigidbody.velocity.magnitude);
+	timeAlive += Time.deltaTime;
+	if (timeAlive >  timeToLive) {
+		Destroy(gameObject);
+	}
+
 }
 
 function OnCollisionEnter (collision : Collision) {

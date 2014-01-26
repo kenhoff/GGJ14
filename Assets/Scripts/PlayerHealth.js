@@ -19,4 +19,6 @@ function Update () {
 	if (health > MaxHealth) {
 		health = MaxHealth;
 	}
+
+	light.color = Color(1, (health / MaxHealth), (health / MaxHealth));
 }

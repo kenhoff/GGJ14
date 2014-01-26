@@ -28,10 +28,13 @@ function Update () {
 		MaxHounds = 2;
 	}
 	else if (PlayerSanityPercent > 0.1) {
-		MaxHounds = 3;
+		MaxHounds = 4;
+	}
+	else if (PlayerSanityPercent > 0) {
+		MaxHounds = 8;
 	}
 	else {
-		MaxHounds = 4;
+		MaxHounds = 20;
 	}
 
 	if (NumberOfHounds < MaxHounds) {
